@@ -5,7 +5,6 @@ import java.util.List;
 
 public class EmployeePayrollService {
 
-
     public enum IOService{DB_IO,REST_IO}
 
     private List<EmployeePayrollData> employeePayrollList;
@@ -25,6 +24,10 @@ public class EmployeePayrollService {
         if(ioService.equals( IOService.REST_IO ))
             return employeePayrollList.size();
         return 0;
+    }
+
+    public void addEmployeeToPayroll(EmployeePayrollData employeePayrollData, IOService ioService) {
+        employeePayrollList.add( employeePayrollData );
     }
 
 }

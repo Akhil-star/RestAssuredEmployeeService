@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cg.restassured.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-06T14:53:07" hostname="DESKTOP-AURK5V2" time="2.334">
+<testsuite name="com.cg.restassured.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-06T15:58:42" hostname="DESKTOP-AURK5V2" time="1.432">
   <properties/>
-  <testcase name="givenEmployeeDataInJsonServer_WhenRetrieved_ShouldMatchTheCount" classname="com.cg.restassured.EmployeePayrollServiceTest" time="2.334"/>
+  <testcase name="givenNewEmployee_WhenAdded_ShouldMatch201ResponseAndCount" classname="com.cg.restassured.EmployeePayrollServiceTest" time="1.432"/>
   <system-out><![CDATA[Employee payroll entries in json server
 [
   {
     "id": 1,
     "name": "Jeff Bezos",
     "gender": "M",
-    "Salary": "100000",
+    "salary": 100000,
     "startDate": {
       "year": 2020,
       "month": 11,
@@ -19,7 +19,7 @@
     "id": 2,
     "name": "Bill Gates",
     "gender": "M",
-    "Salary": "200000",
+    "salary": 200000,
     "startDate": {
       "year": 2020,
       "month": 11,
