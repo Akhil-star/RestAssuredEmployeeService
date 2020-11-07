@@ -107,5 +107,21 @@ public class EmployeePayrollServiceTest {
         Assert.assertEquals( 5,entries);
     }
 
+    @Test
+    public void givenEmployeeToDelete_WhenDeleted_ShouldMatch200ResponseAndCount() {
+        EmployeePayrollService employeePayrollService;
+        EmployeePayrollData[] arrayOfEmps = getEmployeeList();
+        employeePayrollService = new EmployeePayrollService( Arrays.asList( arrayOfEmps ) );
+        EmployeePayrollData employeePayrollData = employeePayrollService.getEmployeePayrollData("Mark Zuckerberg");
+        RequestSpecification requestSpecification = RestAssured.given();
+        requestSpecification.header( "Content-Type","application/json" );
+        Response response = requestSpecification.delete("/employees/"+employeePayrollData.id);
+        int statusCode = response.getStatusCode();
+        Assert.assertEquals( 200, statusCode );
+        employeePayrollService.deleteEmployeePayroll(employeePayrollData.name,REST_IO);
+        long entries = employeePayrollService.countEntries( REST_IO );
+        Assert.assertEquals( 2, entries );
+
+    }
 }
 

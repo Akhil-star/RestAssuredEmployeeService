@@ -5,6 +5,7 @@ import java.util.List;
 
 public class EmployeePayrollService {
 
+
     public enum IOService{DB_IO,REST_IO}
 
     private List<EmployeePayrollData> employeePayrollList;
@@ -20,7 +21,7 @@ public class EmployeePayrollService {
     }
 
     public void addEmployeeToPayroll(EmployeePayrollData employeePayrollData, IOService ioService) {
-        if(ioService.equals( IOService.DB_IO ))
+        if(ioService.equals( IOService.REST_IO ))
            employeePayrollList.add( employeePayrollData );
     }
 
@@ -38,5 +39,12 @@ public class EmployeePayrollService {
                 .filter( employeepayrollDataItem -> employeepayrollDataItem.name.equals( name ))
                 .findFirst().orElse( null );
         return employeePayrollData;
+    }
+
+    public void deleteEmployeePayroll(String name, IOService ioService) {
+        if(ioService.equals(IOService.REST_IO )) {
+            EmployeePayrollData employeePayrollData = this.getEmployeePayrollData( name );
+            employeePayrollList.remove( employeePayrollData );
+        }
     }
 }
