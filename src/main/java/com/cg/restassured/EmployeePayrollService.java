@@ -8,15 +8,8 @@ public class EmployeePayrollService {
     public enum IOService{DB_IO,REST_IO}
 
     private List<EmployeePayrollData> employeePayrollList;
-    private EmployeePayrollDBService employeePayrollDBService;
-
-    public EmployeePayrollService(){
-        employeePayrollDBService = EmployeePayrollDBService.getInstance();
-
-    }
 
     public EmployeePayrollService(List<EmployeePayrollData> employeePayrollList){
-        this();
         this.employeePayrollList=new ArrayList<>(employeePayrollList);
     }
 
