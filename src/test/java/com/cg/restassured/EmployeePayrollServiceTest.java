@@ -36,14 +36,6 @@ public class EmployeePayrollServiceTest {
         return requestSpecification.post("/employees");
     }
 
-    @Test
-    public void givenEmployeeDataInJsonServer_WhenRetrieved_ShouldMatchTheCount() {
-        EmployeePayrollData[] arrayOfEmps = getEmployeeList();
-        EmployeePayrollService employeePayrollService;
-        employeePayrollService = new EmployeePayrollService( Arrays.asList(arrayOfEmps));
-        long entries = employeePayrollService.countEntries( REST_IO );
-        Assert.assertEquals( 2,arrayOfEmps.length );
-    }
 
     @Test
     public void givenNewEmployee_WhenAdded_ShouldMatch201ResponseAndCount(){
@@ -105,5 +97,15 @@ public class EmployeePayrollServiceTest {
         Assert.assertEquals( 200, statusCode );
 
     }
+
+    @Test
+    public void givenEmployeeDataInJsonServer_WhenRetrieved_ShouldMatchTheCount() {
+        EmployeePayrollData[] arrayOfEmps = getEmployeeList();
+        EmployeePayrollService employeePayrollService;
+        employeePayrollService = new EmployeePayrollService( Arrays.asList(arrayOfEmps));
+        long entries = employeePayrollService.countEntries( REST_IO );
+        Assert.assertEquals( 5,entries);
+    }
+
 }
 
