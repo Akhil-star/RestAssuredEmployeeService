@@ -8,15 +8,8 @@ public class EmployeePayrollService {
     public enum IOService{DB_IO,REST_IO}
 
     private List<EmployeePayrollData> employeePayrollList;
-    private EmployeePayrollDBService employeePayrollDBService;
-
-    public EmployeePayrollService(){
-        employeePayrollDBService = EmployeePayrollDBService.getInstance();
-
-    }
 
     public EmployeePayrollService(List<EmployeePayrollData> employeePayrollList){
-        this();
         this.employeePayrollList=new ArrayList<>(employeePayrollList);
     }
 
@@ -27,7 +20,23 @@ public class EmployeePayrollService {
     }
 
     public void addEmployeeToPayroll(EmployeePayrollData employeePayrollData, IOService ioService) {
-        employeePayrollList.add( employeePayrollData );
+        if(ioService.equals( IOService.DB_IO ))
+           employeePayrollList.add( employeePayrollData );
     }
 
+    public void updateEmployeeSalary(String name, double salary,IOService ioService) {
+        if(ioService.equals(IOService.REST_IO )) {
+            EmployeePayrollData employeePayrollData = this.getEmployeePayrollData( name );
+            if (employeePayrollData != null)
+                employeePayrollData.salary = salary;
+        }
+    }
+
+    public EmployeePayrollData getEmployeePayrollData(String name) {
+        EmployeePayrollData employeePayrollData;
+        employeePayrollData = this.employeePayrollList.stream()
+                .filter( employeepayrollDataItem -> employeepayrollDataItem.name.equals( name ))
+                .findFirst().orElse( null );
+        return employeePayrollData;
+    }
 }

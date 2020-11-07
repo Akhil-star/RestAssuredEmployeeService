@@ -84,7 +84,26 @@ public class EmployeePayrollServiceTest {
         }
 
             long entries = employeePayrollService.countEntries( REST_IO );
-            Assert.assertEquals( 4, entries );
+            Assert.assertEquals( 5, entries );
     }
 
+    @Test
+    public void givenNewSalaryForEmployee_WhenUpdated_ShouldMatch200Response() {
+        EmployeePayrollService employeePayrollService;
+        EmployeePayrollData[] arrayOfEmps = getEmployeeList();
+        employeePayrollService = new EmployeePayrollService( Arrays.asList( arrayOfEmps ) );
+
+        employeePayrollService.updateEmployeeSalary("Bill Gates",3000000.00,REST_IO);
+        EmployeePayrollData employeePayrollData = employeePayrollService.getEmployeePayrollData("Bill Gates");
+
+        String empJson = new Gson().toJson( employeePayrollData );
+        RequestSpecification requestSpecification = RestAssured.given();
+        requestSpecification.header( "Content-Type","application/json" );
+        requestSpecification.body( empJson ) ;
+        Response response = requestSpecification.put("/employees/"+employeePayrollData.id);
+        int statusCode = response.getStatusCode();
+        Assert.assertEquals( 200, statusCode );
+
+    }
 }
+

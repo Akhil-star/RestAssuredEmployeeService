@@ -15,7 +15,7 @@
     "id": 2,
     "name": "Bill Gates",
     "gender": "M",
-    "salary": 200000,
+    "salary": 2000000,
     "startDate": {
       "year": 2020,
       "month": 11,
