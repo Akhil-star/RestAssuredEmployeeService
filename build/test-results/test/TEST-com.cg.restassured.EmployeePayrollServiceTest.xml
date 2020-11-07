@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cg.restassured.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-06T15:58:42" hostname="DESKTOP-AURK5V2" time="1.432">
+<testsuite name="com.cg.restassured.EmployeePayrollServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-07T01:52:19" hostname="DESKTOP-AURK5V2" time="1.429">
   <properties/>
-  <testcase name="givenNewEmployee_WhenAdded_ShouldMatch201ResponseAndCount" classname="com.cg.restassured.EmployeePayrollServiceTest" time="1.432"/>
+  <testcase name="givenMultipleEmployees_WhenAdded_ShouldMatch201ResponseAndCount" classname="com.cg.restassured.EmployeePayrollServiceTest" time="1.429"/>
   <system-out><![CDATA[Employee payroll entries in json server
 [
   {
